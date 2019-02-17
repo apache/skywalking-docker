@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM skywalking/base:6.0.0-GA
+FROM apache/skywalking-base:6.0.0-GA
 
 LABEL maintainer="hanahmily@apache.org"
 
