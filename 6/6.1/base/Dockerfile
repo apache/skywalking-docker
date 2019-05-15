@@ -31,7 +31,7 @@ WORKDIR $SKYWALKING_HOME
 
 ENV GPG_KEYS A968F6905E0ACB59E5B24C15D3D9CD50820184C2 B0801BC746F965029A1338072EF5026E70A55777 D360AB2AB20B28403270E2CBE8608938DB25E06B
 ENV SKYWALKING_VERSION=6.1.0
-ENV SKYWALKING_SHA512 a19a24b790f41b1d7f93547104fbfc70a1dc208d855026b0c4696d1991518a952d031b62a76bfa923394042757dc92aa87e6cac6502d015f30258e9959e393bf
+ENV SKYWALKING_SHA512 54fe85c984c369fd2731aa10190ee7e82e15e2c7c9528234993f6c3d4db34d19735b5467875e20dc3f8476e8d6d56d4fcd6118b4aff49f7b5a7215ee032918c0
 
 ENV SKYWALKING_TGZ_URLS \
         https://www.apache.org/dyn/closer.cgi?action=download&filename=skywalking/$SKYWALKING_VERSION/apache-skywalking-apm-$SKYWALKING_VERSION.tar.gz \
@@ -58,7 +58,7 @@ RUN set -eux; \
 	\
 	export GNUPGHOME="$(mktemp -d)"; \
 	for key in $GPG_KEYS; do \
-		gpg --batch --keyserver pgp.mit.edu --recv-keys "$key"; \
+		gpg --batch --keyserver pgp.surfnet.nl --recv-keys "$key"; \
 	done; \
 	\
 	success=; \
