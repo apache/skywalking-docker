@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM openjdk:8-jre-alpine
+FROM openjdk:8-jre-alpine AS build
 
 LABEL maintainer="hanahmily@apache.org"
 
@@ -88,3 +88,10 @@ RUN set -eux; \
 	command -v gpgconf && gpgconf --kill all || :; \
 	rm -rf "$GNUPGHOME"; \
     apk del .fetch-deps
+
+FROM openjdk:8-jre-alpine
+
+COPY --from=build /skywalking /skywalking
+
+RUN apk add --no-cache \
+    bash

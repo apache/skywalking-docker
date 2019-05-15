@@ -14,25 +14,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM apache/skywalking-base:6.0.0-GA
+FROM apache/skywalking-base:6.1.0
 
 LABEL maintainer="hanahmily@apache.org"
 
-ENV DIST_NAME=apache-skywalking-apm-bin \
-    JAVA_OPTS=" -Xms256M " \
+ENV JAVA_OPTS=" -Xms256M " \
     SW_OAP_ADDRESS="127.0.0.1:12800" \
     SW_TIMEOUT="20000"
 
-COPY "$DIST_NAME.tar.gz" /
-
-RUN set -ex; \
-    tar -xzf "$DIST_NAME.tar.gz"; \
-    rm -rf "$DIST_NAME.tar.gz"; \
-    rm -rf "$DIST_NAME/config"; \
-    rm -rf "$DIST_NAME/bin"; rm -rf "$DIST_NAME/oap-libs"; rm -rf "$DIST_NAME/agent"; \
-    mv "$DIST_NAME" skywalking;
-
 WORKDIR skywalking
+
+RUN set -eux; \
+    rm -rf "config"; rm -rf "oap-libs"; \
+    rm -rf "agent";
 
 COPY docker-entrypoint.sh .
 COPY logback.xml webapp/

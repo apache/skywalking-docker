@@ -18,21 +18,15 @@ FROM apache/skywalking-base:6.1.0
 
 LABEL maintainer="hanahmily@apache.org"
 
-ENV DIST_NAME=apache-skywalking-apm-bin \
-    JAVA_OPTS=" -Xms256M " \
+ENV JAVA_OPTS=" -Xms256M " \
     SW_CLUSTER="standalone" \
     SW_STORAGE="h2"
 
-COPY "$DIST_NAME.tar.gz" /
-
-RUN set -ex; \
-    tar -xzf "$DIST_NAME.tar.gz"; \
-    rm -rf "$DIST_NAME.tar.gz"; \
-    rm -rf "$DIST_NAME/config/log4j2.xml"; \
-    rm -rf "$DIST_NAME/bin"; rm -rf "$DIST_NAME/webapp"; rm -rf "$DIST_NAME/agent"; \
-    mv "$DIST_NAME" skywalking;
-
 WORKDIR skywalking
+
+RUN set -eux; \
+    rm -rf "config/log4j2.xml"; \
+    rm -rf "webapp"; rm -rf "agent";
 
 COPY log4j2.xml config/
 COPY docker-entrypoint.sh .
