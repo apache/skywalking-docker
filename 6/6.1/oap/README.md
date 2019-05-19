@@ -43,7 +43,7 @@ Default value is `H2`, avaliable values are:
 There are also some other configuration switchers to extend default configuration, they also have a suffix `_ENABLED`.
 
  - `SW_RECEIVER_ZIPKIN_ENABLED` turns on/off zipkin receiver
- - `SW_RECEIVER_JAEGER_ENABLED` turns on/off zipkin receiver
+ - `SW_RECEIVER_JAEGER_ENABLED` turns on/off jaeger receiver
  - `SW_EXPORTER_ENABLED`  turns on/off exporter
 
 # License
