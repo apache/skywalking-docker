@@ -10,7 +10,7 @@ microservices, cloud native and container-based (Docker, Kubernetes, Mesos) arch
 ## Start a container to connect oap server whose address is `oap:12800`
 
 ```
-$ docker run --name oap --restart always -d -e SW_OAP_ADDRESS=oap:12800 apache/skywalking-ui:6.1.0
+$ docker run --name ui --restart always -d -e SW_OAP_ADDRESS=oap:12800 apache/skywalking-ui:6.1.0
 ```
 
 # Configuration
