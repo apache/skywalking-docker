@@ -32,6 +32,7 @@ Default value is `standalone`, avaliable values are:
  - `consul`, If set this value, all enviroment variables of `cluster.consul` in `application.yml` are avaliable.
  
 ## SW_STORAGE
+<<<<<<< HEAD
 Default value is `h2`, avaliable values are:
 
  - `h2`, If set this value, all enviroment variables of `storage.h2` in `application.yml` are avaliable.

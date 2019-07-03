@@ -1,4 +1,4 @@
-# Apache SkyWalking UI image
+# Apache SkyWalking UI docker file
 
 **Docker images are not official ASF releases but provided for convenience. Recommended usage is always to build the source**
 
@@ -33,3 +33,6 @@ The address of OAP server. Default value is `127.0.0.1:12800`.
  
 ## SW_TIMEOUT
 Reading timeout. Default value is `20000`(millisecond).
+
+# License
+[Apache 2.0 License.](/LICENSE)

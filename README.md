@@ -5,7 +5,12 @@
 **SkyWalking**: an APM(application performance monitor) system, especially designed for 
 microservices, cloud native and container-based (Docker, Kubernetes, Mesos) architectures.
 
-This reposotory includes all docker files of convenience images.
+# Images
+This repository includes related files of following docker images:
+ - [OAP server](6/6.1/oap/README.md)
+ - [UI](6/6.1/ui/README.md)
+
+The convenience images are published in docker hub.
 - https://hub.docker.com/r/apache/skywalking-base
 - https://hub.docker.com/r/apache/skywalking-ui
 - https://hub.docker.com/r/apache/skywalking-oap-server
