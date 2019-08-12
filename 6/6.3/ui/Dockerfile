@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM apache/skywalking-base:6.2.0 AS build
+FROM apache/skywalking-base:6.3.0 AS build
 
 WORKDIR skywalking
 
