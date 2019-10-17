@@ -7,8 +7,8 @@ microservices, cloud native and container-based (Docker, Kubernetes, Mesos) arch
 
 # Images
 This repository includes related files of following docker images:
- - [OAP server](6/6.1/oap/README.md)
- - [UI](6/6.1/ui/README.md)
+ - OAP server
+ - UI
 
 The convenience images are published in docker hub.
 - https://hub.docker.com/r/apache/skywalking-base
