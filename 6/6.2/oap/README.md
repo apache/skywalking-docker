@@ -23,6 +23,9 @@ $ docker run --name oap --restart always -d -e SW_STORAGE=elasticsearch -e SW_ST
 
 We could set up environment variables to configure this image. Most of them are defined in [backend-setup](https://github.com/apache/skywalking/blob/v6.2.0/docs/en/setup/backend/backend-setup.md), but Apache SkyWalking Docker Image adds extra environment variables to help the user to compose it properly. The details are located in [docker-entrypoint.sh](docker-entrypoint.sh)
 
+## SW_ENVOY_ALS_ENABLED
+No default value, set it to `true` to open ALS solution of SkyWalking.
+
 ## SW_CLUSTER
 Default value is `standalone`, avaliable values are:
 
