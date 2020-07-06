@@ -29,7 +29,7 @@ EXT_LIB_DIR=/skywalking/ext-libs
 EXT_CONFIG_DIR=/skywalking/ext-config
 
 # Override configuration files
-cp -vfR ${EXT_CONFIG_DIR}/* config/ || true
+cp -vfRL ${EXT_CONFIG_DIR}/* config/ || true
 
 CLASSPATH="config:$CLASSPATH"
 for i in oap-libs/*.jar
