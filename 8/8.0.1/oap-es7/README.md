@@ -13,14 +13,14 @@ This image can only connect to Elasticsearch **7** when setting `SW_STORAGE`=`el
 
 ## Start a `standlone` container with `H2` storage
 
-```
-$ docker run --name oap --restart always -d apache/skywalking-oap-server:8.0.0-es7
+```shell
+$ docker run --name oap --restart always -d apache/skywalking-oap-server:8.0.1-es7
 ```
 
 ## Start a `standlone` container with `elasticsearch` storage whose address is `elasticsearch:9200`
 
-```
-$ docker run --name oap --restart always -d -e SW_STORAGE=elasticsearch -e SW_STORAGE_ES_CLUSTER_NODES=elasticsearch:9200 apache/skywalking-oap-server:8.0.0-es7
+```shell
+$ docker run --name oap --restart always -d -e SW_STORAGE=elasticsearch -e SW_STORAGE_ES_CLUSTER_NODES=elasticsearch:9200 apache/skywalking-oap-server:8.0.1-es7
 ```
 
 # Configuration
