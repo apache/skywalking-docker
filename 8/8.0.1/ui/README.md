@@ -20,7 +20,7 @@ This image would start up SkyWalking UI only.
 
 ## Start a container to connect oap server whose address is `oap:12800`
 
-```
+```shell
 $ docker run --name oap --restart always -d -e SW_OAP_ADDRESS=oap:12800 apache/skywalking-ui:8.0.1
 ```
 
