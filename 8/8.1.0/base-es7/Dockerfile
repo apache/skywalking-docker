@@ -16,7 +16,7 @@
 
 FROM openjdk:8-jre-alpine AS build
 
-LABEL maintainer="hanahmily@apachr.org,tanjian@apache.org"
+LABEL maintainer="hanahmily@apache.org,tanjian@apache.org"
 
 # Install required packages
 RUN apk add --no-cache \
