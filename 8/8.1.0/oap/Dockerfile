@@ -31,7 +31,7 @@ FROM openjdk:8-jre-alpine
 
 ENV JAVA_OPTS=" -Xms256M "
 
-LABEL maintainer="tanjian@apache.org"
+LABEL maintainer="hanahmily@apache.org,tanjian@apache.org"
 
 COPY --from=build /skywalking /skywalking
 

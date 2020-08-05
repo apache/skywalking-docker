@@ -31,7 +31,7 @@ ENV JAVA_OPTS=" -Xms256M " \
     SW_OAP_ADDRESS="oap:12800" \
     SW_TIMEOUT="20000"
 
-LABEL maintainer="tanjian@apache.org"
+LABEL maintainer="hanahmily@apache.org,tanjian@apache.org"
 
 COPY --from=build /skywalking /skywalking
 
