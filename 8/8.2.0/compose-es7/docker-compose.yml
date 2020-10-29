@@ -37,7 +37,7 @@ services:
         soft: -1
         hard: -1
   oap:
-    image: apache/skywalking-oap-server:8.1.0-es7
+    image: apache/skywalking-oap-server:8.2.0-es7
     container_name: oap
     depends_on:
       - elasticsearch
