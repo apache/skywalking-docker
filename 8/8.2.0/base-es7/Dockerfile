@@ -17,13 +17,6 @@ FROM adoptopenjdk/openjdk11:alpine AS build
 
 LABEL maintainer="hanahmily@apache.org,tanjian@apache.org"
 
-# Install required packages
-RUN apk add --no-cache \
-    bash \
-    python \
-    su-exec
-
-
 ENV SKYWALKING_HOME=/skywalking
 RUN mkdir -p "${SKYWALKING_HOME}"
 WORKDIR $SKYWALKING_HOME
