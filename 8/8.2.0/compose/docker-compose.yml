@@ -41,7 +41,7 @@ services:
     volumes:
       - data:/usr/share/elasticsearch/data
   oap:
-    image: apache/skywalking-oap-server:8.1.0-es6
+    image: apache/skywalking-oap-server:8.2.0-es6
     container_name: oap
     depends_on:
       - elasticsearch
@@ -77,4 +77,3 @@ services:
 volumes:
   data:
     driver: local
-
