@@ -20,7 +20,7 @@ $ docker run --name oap --restart always -d apache/skywalking-oap-server:8.2.0-e
 ## Start a `standlone` container with `elasticsearch7` storage whose address is `elasticsearch:9200`
 
 ```shell
-$ docker run --name oap --restart always -d -e SW_STORAGE=elasticsearch7 -e SW_STORAGE_ES_CLUSTER_NODES=elasticsearch:9200 apache/skywalking-oap-server:8.1.0-es6
+$ docker run --name oap --restart always -d -e SW_STORAGE=elasticsearch7 -e SW_STORAGE_ES_CLUSTER_NODES=elasticsearch:9200 apache/skywalking-oap-server:8.2.0-es6
 ```
 
 # Configuration
