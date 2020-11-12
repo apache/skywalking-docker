@@ -60,7 +60,8 @@ services:
     environment:
       SW_STORAGE: elasticsearch
       SW_STORAGE_ES_CLUSTER_NODES: elasticsearch:9200
-      JAVA_OPTS: "-Xms2048m -Xmx2048m" 
+      SW_HEALTH_CHECKER: default
+      JAVA_OPTS: "-Xms2048m -Xmx2048m"
   ui:
     image: apache/skywalking-ui:8.2.0
     container_name: ui
