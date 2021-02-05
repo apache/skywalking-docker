@@ -146,7 +146,7 @@ RUN set -eux; \
 	\
 	success=; \
 	for url in $SKYWALKING_CLI_ASC_URLS; do \
-		if wget -O ${SKYWALKING_ASC} "$url"; then \
+		if wget -O ${SKYWALKING_CLI_ASC} "$url"; then \
 			success=1; \
 			break; \
 		fi; \
@@ -164,6 +164,7 @@ RUN set -eux; \
 	rm ${SKYWALKING_CLI_TGZ}*; \
 	command -v gpgconf && gpgconf --kill all || :; \
 	rm -rf "$GNUPGHOME"; \
+	ls -la;\
     apk del .fetch-deps
 
 FROM adoptopenjdk/openjdk11:alpine
