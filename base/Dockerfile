@@ -69,7 +69,7 @@ ENV SKYWALKING_CLI_ASC_URLS \
 	    https://www.apache.org/dist/skywalking/cli/$SKYWALKING_CLI_VERSION/$SKYWALKING_CLI_ASC \
 	    https://archive.apache.org/dist/skywalking/cli/$SKYWALKING_CLI_VERSION/$SKYWALKING_CLI_ASC
 
-ENV SKYWALKING_CLI_ASC_URLS \
+ENV SKYWALKING_CLI_SHA512_URLS \
         https://www.apache.org/dyn/closer.cgi?action=download&filename=skywalking/$SKYWALKING_CLI_VERSION/$SKYWALKING_CLI_SHA512 \
         # if the version is outdated, we might have to pull from the dist/archive :/
 	    https://www-us.apache.org/dist/skywalking/cli/$SKYWALKING_CLI_VERSION/$SKYWALKING_CLI_SHA512 \
