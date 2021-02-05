@@ -156,12 +156,10 @@ RUN set -eux; \
 	gpg --batch --verify ${SKYWALKING_CLI_ASC} ${SKYWALKING_CLI_TGZ}; \
 	tar -xvf ${SKYWALKING_CLI_TGZ}; \
     mkdir bin; \
-	mv skywalking-cli-${SKYWALKING_CLI_VERSION}-bin cli; \
-	mv cli/bin/swctl-${SKYWALKING_CLI_VERSION}-linux-amd64 bin/swctl; \
-	rm -rf cli/bin/; \
+	mv skywalking-cli-${SKYWALKING_CLI_VERSION}-bin/bin/swctl-${SKYWALKING_CLI_VERSION}-linux-amd64 bin/swctl; \
 	chmod 755 bin/*; \
-	rm skywalking-cli-bin.tgz*; \
-	rm ${SKYWALKING_CLI_TGZ}*; \
+	rm -rf ${SKYWALKING_CLI_TGZ}*; \
+	rm -rf skywalking-cli-${SKYWALKING_CLI_VERSION}-bin/; \
 	command -v gpgconf && gpgconf --kill all || :; \
 	rm -rf "$GNUPGHOME"; \
 	ls -la;\
