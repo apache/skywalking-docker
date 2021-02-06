@@ -17,7 +17,7 @@
 version: '3.8'
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.6
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ES_VERSION}
     container_name: elasticsearch
     restart: always
     ports:
@@ -31,9 +31,7 @@ services:
     environment:
       - discovery.type=single-node
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms4096m -Xmx4096m"
-      - thread_pool.write.queue_size=1000
-      - thread_pool.index.queue_size=1000
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1

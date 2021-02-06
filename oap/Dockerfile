@@ -14,7 +14,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM apache/skywalking-base:8.3.0-es6 AS build
+ARG tag
+ARG version
+
+FROM apache/skywalking-base:${version}-${tag} AS build
 
 WORKDIR skywalking
 
@@ -28,6 +31,9 @@ RUN mkdir ext-config; \
     mkdir ext-libs;
 
 FROM adoptopenjdk/openjdk11:alpine
+
+ARG tag
+ENV ES_VERSION=${tag}
 
 ENV JAVA_OPTS=" -Xms256M "
 

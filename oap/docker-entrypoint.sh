@@ -20,11 +20,6 @@ set -e
 
 echo "[Entrypoint] Apache SkyWalking Docker Image"
 
-if [[ "$SW_STORAGE" = "elasticsearch7" ]]; then
-    echo "Current image doesn't Elasticsearch 7"
-    exit 1
-fi
-
 EXT_LIB_DIR=/skywalking/ext-libs
 EXT_CONFIG_DIR=/skywalking/ext-config
 

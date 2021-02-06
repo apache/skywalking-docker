@@ -14,7 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM apache/skywalking-base:8.3.0-es6 AS build
+ARG version
+
+FROM apache/skywalking-base:${version}-es6 AS build
 
 WORKDIR skywalking
 

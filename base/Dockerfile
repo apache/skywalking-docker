@@ -13,17 +13,24 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+ARG tag
 
-FROM adoptopenjdk/openjdk11:alpine AS build
-
-LABEL maintainer="hanahmily@apache.org,tanjian@apache.org"
-
+FROM adoptopenjdk/openjdk11:alpine AS base
 ARG version
-ARG cli_version=0.5.0
-
+RUN echo "Building Apache SkyWalking ${version}"
 ENV SKYWALKING_VERSION=${version}
-ENV SKYWALKING_CLI_VERSION=${cli_version}
-ENV SKYWALKING_TGZ=apache-skywalking-apm-$SKYWALKING_VERSION.tar.gz
+
+FROM base AS es6
+RUN echo "This is the stage that build the es6 image"
+ENV SKYWALKING_TGZ=apache-skywalking-apm-${SKYWALKING_VERSION}.tar.gz
+
+FROM base AS es7
+RUN echo "This is the stage that build the es7 image"
+ENV SKYWALKING_TGZ=apache-skywalking-apm-es7-${SKYWALKING_VERSION}.tar.gz
+
+FROM ${tag} AS build
+
+ENV SKYWALKING_CLI_VERSION=0.5.0
 ENV SKYWALKING_ASC=${SKYWALKING_TGZ}.asc
 ENV SKYWALKING_SHA512=${SKYWALKING_TGZ}.sha512
 ENV SKYWALKING_CLI_TGZ=skywalking-cli-$SKYWALKING_CLI_VERSION-bin.tgz
@@ -32,7 +39,9 @@ ENV SKYWALKING_CLI_SHA512=${SKYWALKING_CLI_TGZ}.sha512
 
 ENV SKYWALKING_HOME=/skywalking
 RUN mkdir -p "${SKYWALKING_HOME}"
-WORKDIR $SKYWALKING_HOME
+ENV TMPDIR=/tmp/sw
+RUN mkdir -p "${TMPDIR}"
+WORKDIR $TMPDIR
 
 ENV SKYWALKING_TGZ_URLS \
         https://www.apache.org/dyn/closer.cgi?action=download&filename=skywalking/$SKYWALKING_VERSION/$SKYWALKING_TGZ \
@@ -119,11 +128,8 @@ RUN set -eux; \
 	[ -n "$success" ]; \
 	\
 	gpg --batch --verify ${SKYWALKING_ASC} ${SKYWALKING_TGZ}; \
-	mv ${SKYWALKING_TGZ} skywalking.tar.gz; \
-	tar -xvf skywalking.tar.gz --strip-components=1; \
-	rm -rf bin/; \
-	rm skywalking.tar.gz*; \
-	rm ${SKYWALKING_TGZ}*; \
+	tar -xvf ${SKYWALKING_TGZ} --strip-components=1 -C "${SKYWALKING_HOME}"; \
+	rm -rf "${SKYWALKING_HOME}/bin/"; \
 	success=; \
 	for url in $SKYWALKING_CLI_TGZ_URLS; do \
 		if wget -O ${SKYWALKING_CLI_TGZ} "$url"; then \
@@ -155,20 +161,17 @@ RUN set -eux; \
 	\
 	gpg --batch --verify ${SKYWALKING_CLI_ASC} ${SKYWALKING_CLI_TGZ}; \
 	tar -xvf ${SKYWALKING_CLI_TGZ}; \
-    mkdir bin; \
-	mv skywalking-cli-${SKYWALKING_CLI_VERSION}-bin/bin/swctl-${SKYWALKING_CLI_VERSION}-linux-amd64 bin/swctl; \
-	chmod 755 bin/*; \
-	rm -rf ${SKYWALKING_CLI_TGZ}*; \
-	rm -rf skywalking-cli-${SKYWALKING_CLI_VERSION}-bin/; \
+    mkdir "${SKYWALKING_HOME}/bin/"; \
+	mv skywalking-cli-${SKYWALKING_CLI_VERSION}-bin/bin/swctl-${SKYWALKING_CLI_VERSION}-linux-amd64 ${SKYWALKING_HOME}/bin/swctl; \
+	chmod 755 ${SKYWALKING_HOME}/bin/*; \
 	command -v gpgconf && gpgconf --kill all || :; \
-	rm -rf "$GNUPGHOME"; \
-	ls -la;\
-    apk del .fetch-deps
+	ls -la ${SKYWALKING_HOME};
 
 FROM adoptopenjdk/openjdk11:alpine
+
+LABEL maintainer="hanahmily@apache.org,tanjian@apache.org"
 
 COPY --from=build /skywalking /skywalking
 
 RUN apk add --no-cache \
     bash
-

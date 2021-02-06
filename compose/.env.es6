@@ -1,0 +1,2 @@
+ES_VERSION=6.8.8
+SW_STORAGE=elasticsearch
