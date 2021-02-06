@@ -51,6 +51,6 @@ push.ui:
 PUSH_TARGETS:=
 $(foreach TGT,$(BUILD_TARGETS),$(eval PUSH_TARGETS+=push.$(TGT)))
 
-docker.push: $(DOCKER_PUSH_TARGETS)
+docker.push: $(PUSH_TARGETS)
 
 .PHONY: $(BUILD_TARGETS) $(COMPOSE_TARGETS) $(PUSH_TARGETS)
