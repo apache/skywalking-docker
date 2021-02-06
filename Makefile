@@ -31,7 +31,7 @@ ui:
 	@echo "Building ui"
 	pushd $(ROOT)/ui \
 	&& $(D) build --build-arg version=$(SW_VERSION) -t apache/skywalking-ui:$(SW_VERSION) . \
-	&& $(D) tag apache/skywalking-ui:$(SW_VERSION)-${imgTag} apache/skywalking-ui:latest \
+	&& $(D) tag apache/skywalking-ui:$(SW_VERSION) apache/skywalking-ui:latest \
 	&& popd
 
 $(COMPOSE_TARGETS):
