@@ -35,14 +35,14 @@ $(COMPLEX_BUILD_TARGETS):
 	@echo "Building $@"
 	$(eval repo := $(call word-dot,$@,1))
 	$(eval imgTag := $(call word-dot,$@,2))
-	pushd $(ROOT)/base \
-	&& $(D) build --build-arg version=$(SW_VERSION) --build-arg tag=$(imgTag) -t apache/skywalking-$(repo):${SW_VERSION}-${imgTag} . \
+	pushd $(ROOT)/$(repo) \
+	&& $(D) build $(SW_BUILD_ARGS) --build-arg version=$(SW_VERSION) --build-arg tag=$(imgTag) -t apache/skywalking-$(repo):${SW_VERSION}-${imgTag} . \
 	&& popd
 
 ui:
 	@echo "Building ui"
 	pushd $(ROOT)/ui \
-	&& $(D) build --build-arg version=$(SW_VERSION) -t apache/skywalking-ui:$(SW_VERSION) . \
+	&& $(D) build $(SW_BUILD_ARGS) --build-arg version=$(SW_VERSION) -t apache/skywalking-ui:$(SW_VERSION) . \
 	&& $(D) tag apache/skywalking-ui:$(SW_VERSION) apache/skywalking-ui:latest \
 	&& popd
 
