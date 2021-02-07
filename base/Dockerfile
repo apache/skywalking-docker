@@ -94,13 +94,13 @@ RUN set -eux; \
 		openssl \
 	; \
 	\
-	wget -O KEYS https://downloads.apache.org/skywalking/KEYS; \
+	wget --timeout=20 -O KEYS https://downloads.apache.org/skywalking/KEYS; \
 	export GNUPGHOME="$(mktemp -d)"; \
 	gpg --import KEYS; \
 	\
 	success=; \
 	for url in $SKYWALKING_TGZ_URLS; do \
-		if wget -O ${SKYWALKING_TGZ} "$url"; then \
+		if wget --timeout=20  -O ${SKYWALKING_TGZ} "$url"; then \
 			success=1; \
 			break; \
 		fi; \
@@ -109,7 +109,7 @@ RUN set -eux; \
 	\
 	success=; \
 	for url in $SKYWALKING_SHA512_URLS; do \
-		if wget -O ${SKYWALKING_SHA512} "$url"; then \
+		if wget --timeout=20  -O ${SKYWALKING_SHA512} "$url"; then \
 			success=1; \
 			break; \
 		fi; \
@@ -120,7 +120,7 @@ RUN set -eux; \
 	\
 	success=; \
 	for url in $SKYWALKING_ASC_URLS; do \
-		if wget -O ${SKYWALKING_ASC} "$url"; then \
+		if wget --timeout=20  -O ${SKYWALKING_ASC} "$url"; then \
 			success=1; \
 			break; \
 		fi; \
@@ -132,7 +132,7 @@ RUN set -eux; \
 	rm -rf "${SKYWALKING_HOME}/bin/"; \
 	success=; \
 	for url in $SKYWALKING_CLI_TGZ_URLS; do \
-		if wget -O ${SKYWALKING_CLI_TGZ} "$url"; then \
+		if wget --timeout=20  -O ${SKYWALKING_CLI_TGZ} "$url"; then \
 			success=1; \
 			break; \
 		fi; \
@@ -141,7 +141,7 @@ RUN set -eux; \
 	\
 	success=; \
 	for url in $SKYWALKING_CLI_SHA512_URLS; do \
-		if wget -O ${SKYWALKING_CLI_SHA512} "$url"; then \
+		if wget --timeout=20  -O ${SKYWALKING_CLI_SHA512} "$url"; then \
 			success=1; \
 			break; \
 		fi; \
@@ -152,7 +152,7 @@ RUN set -eux; \
 	\
 	success=; \
 	for url in $SKYWALKING_CLI_ASC_URLS; do \
-		if wget -O ${SKYWALKING_CLI_ASC} "$url"; then \
+		if wget --timeout=20  -O ${SKYWALKING_CLI_ASC} "$url"; then \
 			success=1; \
 			break; \
 		fi; \
