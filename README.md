@@ -17,5 +17,44 @@ The convenience images are published in docker hub.
 - https://hub.docker.com/r/apache/skywalking-ui
 - https://hub.docker.com/r/apache/skywalking-oap-server
 
+# How to build
+
+When the version < `8.4.0`, the release manifests are grouping by their major version number and full version number in `archive`.
+
+From `8.4.0`, issuing follows to build relevant docker images
+
+```sh
+# source 8/v8.4.0.sh if the target version is 8.4.0
+source <major_version>/v<version>.sh
+
+make
+```
+
+# How to publish images
+
+After a SkyWalking's Apache release, composing a new version environment setting script to `<major_version>` folder with the name like `v<version>.sh`
+
+Building images as below:
+
+```sh
+source <major_version>/v<version>.sh
+make
+```
+
+Verifying images:
+
+```sh
+# Booting up a compose of ES6, OAP server and UI
+make compose.es6
+# Booting up a compose of ES7, OAP server and UI
+make compose.es7
+```
+
+Pushing built images to docker hub repos:
+
+```sh
+make docker.push
+```
+
 # License
 [Apache 2.0 License.](/LICENSE)

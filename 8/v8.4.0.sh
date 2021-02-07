@@ -14,5 +14,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ES_VERSION=7.5.0
-SW_STORAGE=elasticsearch7
+export SW_VERSION=8.4.0
