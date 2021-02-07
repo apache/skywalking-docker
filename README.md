@@ -56,5 +56,13 @@ Pushing built images to docker hub repos:
 make docker.push
 ```
 
+# How to build images before 8.4.0
+
+The manifests building images before 8.4.0 are archived into `archive` folder.
+
+These "archived" images could not be built by any `make` target, being built manually instead. 
+The approach is that navigating to the target based on the path grouped by SkyWalking release version number
+, then building specific images by `docker build`.
+
 # License
 [Apache 2.0 License.](/LICENSE)
