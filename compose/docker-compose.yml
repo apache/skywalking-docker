@@ -39,7 +39,7 @@ services:
     volumes:
       - data:/usr/share/elasticsearch/data
   oap:
-    image: apache/skywalking-oap-server:8.3.0-es6
+    image: apache/skywalking-oap-server:8.4.0-es6
     container_name: oap
     depends_on:
       - elasticsearch
@@ -62,7 +62,7 @@ services:
       SW_TELEMETRY: prometheus
       JAVA_OPTS: "-Xms2048m -Xmx2048m"
   ui:
-    image: apache/skywalking-ui:8.3.0
+    image: apache/skywalking-ui:8.4.0
     container_name: ui
     depends_on:
       - oap
