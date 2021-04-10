@@ -25,7 +25,7 @@ BASE_BUILD_TARGETS := $(TAG_SUFS:%=base.%)
 OAP_BUILD_TARGETS := $(TAG_SUFS:%=oap-server.%)
 COMPLEX_BUILD_TARGETS := $(BASE_BUILD_TARGETS) $(OAP_BUILD_TARGETS)
 COMPOSE_TARGETS := $(TAG_SUFS:%=compose.%)
-BUILD_TARGETS := $(COMPLEX_BUILD_TARGETS) ui
+BUILD_TARGETS := $(COMPLEX_BUILD_TARGETS) ui java-agent
 
 word-dot = $(word $2,$(subst ., ,$1))
 
@@ -46,6 +46,11 @@ ui:
 	&& $(D) tag apache/skywalking-ui:$(SW_VERSION) apache/skywalking-ui:latest \
 	&& popd
 
+
+java-agent:
+	$(MAKE) -C java-agent build
+
+
 $(COMPOSE_TARGETS):
 	@echo "Booting $@"
 	$(eval imgTag := $(subst compose.,,$@))
@@ -59,6 +64,9 @@ $(foreach TGT,$(COMPLEX_BUILD_TARGETS),$(eval push.$(TGT): ;\
 push.ui:
 	$(D) push apache/skywalking-ui:$(SW_VERSION) \
 	&& $(D) push  apache/skywalking-ui:latest
+
+push.java-agent:
+	$(MAKE) -C java-agent push
 
 PUSH_TARGETS:=
 $(foreach TGT,$(BUILD_TARGETS),$(eval PUSH_TARGETS+=push.$(TGT)))
