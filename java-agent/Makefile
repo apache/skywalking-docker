@@ -34,7 +34,7 @@ $(TARGETS):
 
 $(PUSH_TARGETS):
 	$(eval version := $(call word-dot,$@,2))
-	@(D) push apache/skywalking-java-agent:${SW_VERSION}-$(version) \
+	$(D) push apache/skywalking-java-agent:${SW_VERSION}-$(version) \
 
 alpine: BASE_IMAGE=alpine
 
