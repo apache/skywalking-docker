@@ -19,7 +19,7 @@ The convenience images are published in docker hub.
 - https://hub.docker.com/r/apache/skywalking-oap-server
 
 Java agent images are available too.
-- https://hub.docker.com/repository/docker/apache/skywalking-java-agent
+- https://hub.docker.com/r/apache/skywalking-java-agent
 
 # How to build
 
