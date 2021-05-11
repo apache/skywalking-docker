@@ -9,6 +9,7 @@ microservices, cloud native and container-based (Docker, Kubernetes, Mesos) arch
 This repository includes related files of following docker images:
  - OAP server
  - UI
+ - Java agent
  
  Documents of each version are in `v-x.y.z/oap` and `v-x.y.z/ui`. Such as [8.1.0 OAP](8/8.1.0/oap) and [8.1.0 UI](8/8.1.0/ui)
 
@@ -16,6 +17,9 @@ The convenience images are published in docker hub.
 - https://hub.docker.com/r/apache/skywalking-base
 - https://hub.docker.com/r/apache/skywalking-ui
 - https://hub.docker.com/r/apache/skywalking-oap-server
+
+Java agent images are available too.
+- https://hub.docker.com/repository/docker/apache/skywalking-java-agent
 
 # How to build
 
