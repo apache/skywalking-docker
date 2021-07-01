@@ -13,13 +13,14 @@ This repository includes related files of following docker images:
  
  Documents of each version are in `v-x.y.z/oap` and `v-x.y.z/ui`. Such as [8.1.0 OAP](8/8.1.0/oap) and [8.1.0 UI](8/8.1.0/ui)
 
-The convenience images are published in docker hub.
-- https://hub.docker.com/r/apache/skywalking-base
-- https://hub.docker.com/r/apache/skywalking-ui
-- https://hub.docker.com/r/apache/skywalking-oap-server
+The convenience images are published to Docker Hub and available from the `skywalking.docker.scarf.sh` endpoint.
+
+- `skywalking.docker.scarf.sh/apache/skywalking-base` ([Docker Hub](https://hub.docker.com/r/apache/skywalking-base))
+- `skywalking.docker.scarf.sh/apache/skywalking-ui` ([Docker Hub](https://hub.docker.com/r/apache/skywalking-ui))
+- `skywalking.docker.scarf.sh/apache/skywalking-oap-server` ([Docker Hub](https://hub.docker.com/r/apache/skywalking-oap-server))
 
 Java agent images are available too.
-- https://hub.docker.com/r/apache/skywalking-java-agent
+- `skywalking.docker.scarf.sh/apache/skywalking-java-agent` ([Docker Hub](https://hub.docker.com/r/apache/skywalking-java-agent))
 
 # How to build
 
