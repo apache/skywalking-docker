@@ -39,7 +39,7 @@ services:
     volumes:
       - data:/usr/share/elasticsearch/data
   oap:
-    image: apache/skywalking-oap-server:${SW_VERSION}-es7
+    image: apache/skywalking-oap-server:${SW_VERSION}-${IMAGE_TAG}
     container_name: oap
     depends_on:
       - elasticsearch
