@@ -55,7 +55,7 @@ $(COMPOSE_TARGETS):
 	@echo "Booting $@"
 	$(eval imgTag := $(subst compose.,,$@))
 	pushd $(ROOT)/compose \
-	&& $(DC) --env-file .env.${imgTag} up \
+	&& $(DC) -f docker-compose.${imgTag}.yml --env-file .env.${imgTag} up \
 	&& popd
 
 $(foreach TGT,$(COMPLEX_BUILD_TARGETS),$(eval push.$(TGT): ;\
