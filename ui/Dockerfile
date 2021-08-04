@@ -30,7 +30,7 @@ COPY logback.xml webapp/
 FROM adoptopenjdk/openjdk11:alpine
 
 ENV JAVA_OPTS=" -Xms256M " \
-    SW_OAP_ADDRESS="oap:12800" \
+    SW_OAP_ADDRESS="http://oap:12800" \
     SW_TIMEOUT="20000"
 
 LABEL maintainer="hanahmily@apache.org,tanjian@apache.org"
