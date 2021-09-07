@@ -25,7 +25,7 @@ BASE_BUILD_TARGETS := $(TAG_SUFS:%=base.%)
 OAP_BUILD_TARGETS := $(TAG_SUFS:%=oap-server.%)
 COMPLEX_BUILD_TARGETS := $(BASE_BUILD_TARGETS) $(OAP_BUILD_TARGETS)
 COMPOSE_TARGETS := $(TAG_SUFS:%=compose.%)
-BUILD_TARGETS := $(COMPLEX_BUILD_TARGETS) ui java-agent
+BUILD_TARGETS := $(COMPLEX_BUILD_TARGETS) ui java-agent python-agent
 
 word-dot = $(word $2,$(subst ., ,$1))
 
@@ -50,6 +50,8 @@ ui:
 java-agent:
 	$(MAKE) -C java-agent build
 
+python-agent:
+	$(MAKE) -C python-agent build
 
 $(COMPOSE_TARGETS):
 	@echo "Booting $@"
@@ -67,6 +69,9 @@ push.ui:
 
 push.java-agent:
 	$(MAKE) -C java-agent push
+
+push.python-agent:
+	$(MAKE) -C python-agent push
 
 PUSH_TARGETS:=
 $(foreach TGT,$(BUILD_TARGETS),$(eval PUSH_TARGETS+=push.$(TGT)))

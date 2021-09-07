@@ -10,7 +10,8 @@ This repository includes related files of following docker images:
  - OAP server
  - UI
  - Java agent
- 
+ - Python agent
+
  Documents of each version are in `v-x.y.z/oap` and `v-x.y.z/ui`. Such as [8.1.0 OAP](8/8.1.0/oap) and [8.1.0 UI](8/8.1.0/ui)
 
 The convenience images are published to Docker Hub and available from the `skywalking.docker.scarf.sh` endpoint.
@@ -19,8 +20,9 @@ The convenience images are published to Docker Hub and available from the `skywa
 - `skywalking.docker.scarf.sh/apache/skywalking-ui` ([Docker Hub](https://hub.docker.com/r/apache/skywalking-ui))
 - `skywalking.docker.scarf.sh/apache/skywalking-oap-server` ([Docker Hub](https://hub.docker.com/r/apache/skywalking-oap-server))
 
-Java agent images are available too.
+Java and Python agent images are available too.
 - `skywalking.docker.scarf.sh/apache/skywalking-java-agent` ([Docker Hub](https://hub.docker.com/r/apache/skywalking-java-agent))
+- `skywalking.docker.scarf.sh/apache/skywalking-python` ([Docker Hub](https://hub.docker.com/r/apache/skywalking-python))
 
 # How to build
 
@@ -31,18 +33,22 @@ From `8.4.0`, issuing follows to build relevant docker images
 ```sh
 # source 8/v8.4.0.sh if the target version is 8.4.0
 source <major_version>/v<version>.sh
+source python-agent/v<version>.sh
 
 make
 ```
 
 # How to publish images
 
-After a SkyWalking's Apache release, composing a new version environment setting script to `<major_version>` folder with the name like `v<version>.sh`
+After a SkyWalking's Apache release, composing a new version environment setting script to `<major_version>` folder with the name like `v<version>.sh`,
+the same goes for the Python agent, composing a new script naming `v<version>.sh` to `python-agent` folder.
 
 Building images as below:
 
 ```sh
 source <major_version>/v<version>.sh
+source python-agent/v<version>.sh
+
 make
 ```
 
