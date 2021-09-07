@@ -16,4 +16,3 @@
 
 ES_VERSION=6.8.18
 SW_STORAGE=elasticsearch
-IMAGE_TAG=es6

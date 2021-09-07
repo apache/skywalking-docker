@@ -1,6 +1,6 @@
 # Apache SkyWalking Docker Files
 
-<img src="http://skywalking.apache.org/assets/logo.svg" alt="Sky Walking logo" height="90px" align="right" />
+<img src="https://skywalking.apache.org/assets/logo.svg" alt="Sky Walking logo" height="90px" align="right" />
 
 **SkyWalking**: an APM(application performance monitor) system, especially designed for 
 microservices, cloud native and container-based (Docker, Kubernetes, Mesos) architectures.
@@ -11,7 +11,7 @@ This repository includes related files of following docker images:
  - UI
  - Java agent
  
- Documents of each version are in `v-x.y.z/oap` and `v-x.y.z/ui`. Such as [8.1.0 OAP](8/8.1.0/oap) and [8.1.0 UI](8/8.1.0/ui)
+ Documents of each version are in `v-x.y.z/oap` and `v-x.y.z/ui`. Such as [8.1.0 OAP](archive/8/8.1.0/oap) and [8.1.0 UI](archive/8/8.1.0/ui)
 
 The convenience images are published to Docker Hub and available from the `skywalking.docker.scarf.sh` endpoint.
 
@@ -24,6 +24,8 @@ Java agent images are available too.
 
 # How to build
 
+## OAP and UI
+
 When the version < `8.4.0`, the release manifests are grouping by their major version number and full version number in `archive`.
 
 From `8.4.0`, issuing follows to build relevant docker images
@@ -34,6 +36,10 @@ source <major_version>/v<version>.sh
 
 make
 ```
+
+## Java Agent
+
+
 
 # How to publish images
 

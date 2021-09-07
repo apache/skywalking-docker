@@ -13,22 +13,14 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-ARG tag
 
 FROM adoptopenjdk/openjdk11:alpine AS base
 ARG version
 RUN echo "Building Apache SkyWalking ${version}"
 ENV SKYWALKING_VERSION=${version}
-
-FROM base AS es6
-RUN echo "This is the stage that build the es6 image"
 ENV SKYWALKING_TGZ=apache-skywalking-apm-${SKYWALKING_VERSION}.tar.gz
 
-FROM base AS es7
-RUN echo "This is the stage that build the es7 image"
-ENV SKYWALKING_TGZ=apache-skywalking-apm-es7-${SKYWALKING_VERSION}.tar.gz
-
-FROM ${tag} AS build
+FROM base AS build
 
 ENV SKYWALKING_CLI_VERSION=0.7.0
 ENV SKYWALKING_ASC=${SKYWALKING_TGZ}.asc

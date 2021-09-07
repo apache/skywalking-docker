@@ -14,17 +14,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-TAG_SUFS := es6 es7
-
 ROOT := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 D := docker
 DC := docker-compose
 
-BASE_BUILD_TARGETS := $(TAG_SUFS:%=base.%)
-OAP_BUILD_TARGETS := $(TAG_SUFS:%=oap-server.%)
-COMPLEX_BUILD_TARGETS := $(BASE_BUILD_TARGETS) $(OAP_BUILD_TARGETS)
-COMPOSE_TARGETS := $(TAG_SUFS:%=compose.%)
+COMPLEX_BUILD_TARGETS := base oap-server
+COMPOSE_TARGETS := compose
 BUILD_TARGETS := $(COMPLEX_BUILD_TARGETS) ui java-agent
 
 word-dot = $(word $2,$(subst ., ,$1))
@@ -33,10 +29,8 @@ build: $(BUILD_TARGETS)
 
 $(COMPLEX_BUILD_TARGETS):
 	@echo "Building $@"
-	$(eval repo := $(call word-dot,$@,1))
-	$(eval imgTag := $(call word-dot,$@,2))
-	pushd $(ROOT)/$(repo) \
-	&& $(D) build $(SW_BUILD_ARGS) --build-arg version=$(SW_VERSION) --build-arg tag=$(imgTag) -t apache/skywalking-$(repo):${SW_VERSION}-${imgTag} . \
+	pushd $(ROOT)/$@ \
+	&& $(D) build $(SW_BUILD_ARGS) --build-arg version=$(SW_VERSION) -t apache/skywalking-$@:${SW_VERSION} . \
 	&& popd
 
 ui:
