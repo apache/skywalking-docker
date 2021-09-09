@@ -2,7 +2,7 @@
 
 Since SkyWalking 8.8.0, the Dockerfiles are merged
 into [the OAP repo](https://github.com/apache/skywalking/tree/master/docker)
-and [the Java agent repo](https://github.com/apache/skywalking-java) respectively, this repo is archived and is not
+and [the Java agent repo](https://github.com/apache/skywalking-java) respectively, this repo is archived and not
 maintained anymore.
 
 # Apache SkyWalking Docker Files
